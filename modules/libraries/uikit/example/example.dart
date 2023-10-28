@@ -3,8 +3,10 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:uikit/const/app_gap.dart';
 import 'package:uikit/const/app_icons.dart';
 import 'package:uikit/const/app_palette.dart';
+import 'package:uikit/const/form_order_theme.dart';
 import 'package:uikit/widgets/app_date_picker.dart';
 import 'package:uikit/widgets/multiple_address_input.dart';
 import 'package:uikit/widgets/app_button.dart';
@@ -14,7 +16,6 @@ import 'package:uikit/widgets/order_details.dart';
 
 void main(List<String> args) => runApp(const UIKitExample());
 
-const verticalGap20 = SizedBox(height: 20);
 
 class UIKitExample extends StatelessWidget {
   const UIKitExample({super.key});
@@ -22,7 +23,8 @@ class UIKitExample extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(fontFamily: 'Roboto'),
+      theme: FormOrderTheme.dark,
+      darkTheme: FormOrderTheme.dark,
       home: UIKitExampleContent(),
     );
   }
@@ -43,7 +45,7 @@ class UIKitExampleContent extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                verticalGap20,
+                AppGap.vertical20,
                 SizedBox(
                   width: double.infinity,
                   height: 50,
@@ -52,7 +54,7 @@ class UIKitExampleContent extends StatelessWidget {
                     onPressed: () {},
                   ),
                 ),
-                verticalGap20,
+                AppGap.vertical20,
                 SizedBox(
                   height: 33,
                   child: Row(
@@ -78,17 +80,17 @@ class UIKitExampleContent extends StatelessWidget {
                     ],
                   ),
                 ),
-                verticalGap20,
+                AppGap.vertical20,
                 AppTextButton(
                   label: "Add address line +",
                   onPressed: () {},
                 ),
-                verticalGap20,
+                AppGap.vertical20,
                 AppTextField(
                   hint: "Fullname",
                   prefixIcon: SvgPicture.asset(AppIcons.person),
                 ),
-                verticalGap20,
+                AppGap.vertical20,
                 SizedBox(
                   height: 40,
                   child: AppTextField(
@@ -98,7 +100,7 @@ class UIKitExampleContent extends StatelessWidget {
                         const EdgeInsetsDirectional.symmetric(vertical: 12),
                   ),
                 ),
-                verticalGap20,
+                AppGap.vertical20,
                 MultipleAddressInput(
                   addressMaxCount: 3,
                   onNewAddress: (controller) {
@@ -106,11 +108,11 @@ class UIKitExampleContent extends StatelessWidget {
                     log("Length: ${addressControllers.length}");
                   },
                 ),
-                verticalGap20,
+                AppGap.vertical20,
                 AppDatePicker(
                   onPicked: (value) => log("Date: $value"),
                 ),
-                verticalGap20,
+                AppGap.vertical20,
                 AppTextField(
                   prefixIcon: SvgPicture.asset(AppIcons.placeMark),
                   keyboardType: TextInputType.number,
@@ -120,7 +122,7 @@ class UIKitExampleContent extends StatelessWidget {
                     FilteringTextInputFormatter.digitsOnly,
                   ],
                 ),
-                verticalGap20,
+                AppGap.vertical20,
                 const OrderDetails(
                   fullname: "Denilev Egor",
                   place: (

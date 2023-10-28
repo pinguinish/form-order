@@ -53,11 +53,9 @@ class _AddableAdressInputState extends State<MultipleAddressInput> {
       onPressed: () {
         final addressCount = (children.length ~/ 4) + 1;
 
-        final itemController = TextEditingController();
+        proceessAddingWidget() {
+          final itemController = TextEditingController();
 
-        if (addressCount >= widget.addressMaxCount) {
-          // TODO: get rid of it
-          // it violates the DRY principle
           final nextChildren = _newChildrens(
             itemController,
             addressCount,
@@ -65,17 +63,15 @@ class _AddableAdressInputState extends State<MultipleAddressInput> {
           widgetExpanderController.all(nextChildren);
           widgetExpanderController.addDisposable(itemController);
           widget.onNewAddress?.call(itemController);
+        }
+
+        if (addressCount >= widget.addressMaxCount) {
+          proceessAddingWidget();
           widgetExpanderController.removeEmitter();
           return;
         }
 
-        final nextChildren = _newChildrens(
-          itemController,
-          addressCount,
-        );
-        widgetExpanderController.all(nextChildren);
-        widgetExpanderController.addDisposable(itemController);
-        widget.onNewAddress?.call(itemController);
+        proceessAddingWidget();
       },
     );
   }
