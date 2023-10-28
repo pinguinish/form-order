@@ -16,9 +16,7 @@ class AppTextButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        print("Hey");
-      },
+      onTap: onPressed,
       child: Text(
         label,
         style: labelStyle ??
