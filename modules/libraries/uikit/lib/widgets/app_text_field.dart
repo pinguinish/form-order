@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:uikit/const/app_palette.dart';
 
-// Default text style of AppTextField
-const _textStyleWithColor = TextStyle(color: AppPalette.greyC1);
-
 // Defauil border of AppTextField
 const _inputBorderSideColor = OutlineInputBorder(
   borderSide: BorderSide(color: AppPalette.greyC3),
@@ -20,8 +17,12 @@ class AppTextField extends StatelessWidget {
     this.controller,
     this.prefixIcon,
     this.prefixIconInnerPadding,
+    this.enabled = true,
+    this.style,
   });
 
+  final TextStyle? style;
+  final bool enabled;
   final String? hint;
   final Widget? prefixIcon;
   final TextEditingController? controller;
@@ -30,9 +31,10 @@ class AppTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextField(
+      enabled: enabled,
       controller: controller,
       cursorColor: AppPalette.greyC1,
-      style: _textStyleWithColor,
+      style: style ?? const TextStyle(color: AppPalette.greyC1),
       decoration: InputDecoration(
         hintText: hint,
         hintStyle: const TextStyle(color: AppPalette.greyC2),
