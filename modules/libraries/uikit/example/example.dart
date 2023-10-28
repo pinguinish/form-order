@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:uikit/const/app_palette.dart';
 import 'package:uikit/widgets/app_date_picker.dart';
@@ -87,12 +88,13 @@ class UIKitExampleContent extends StatelessWidget {
                 ),
                 verticalGap20,
                 SizedBox(
-                  height: 38,
+                  height: 40,
                   child: AppTextField(
                     hint: "Search",
                     prefixIcon: SvgPicture.asset('assets/icons/search.svg'),
-                    prefixIconInnerPadding: const EdgeInsetsDirectional.symmetric(
-                      vertical: 10,
+                    prefixIconInnerPadding:
+                        const EdgeInsetsDirectional.symmetric(
+                      vertical: 12,
                     ),
                   ),
                 ),
@@ -108,7 +110,16 @@ class UIKitExampleContent extends StatelessWidget {
                 AppDatePicker(
                   onPicked: (value) => log("Date: $value"),
                 ),
-                verticalGap20
+                verticalGap20,
+                AppTextField(
+                  prefixIcon: SvgPicture.asset('assets/icons/place-mark.svg'),
+                  keyboardType: TextInputType.number,
+                  hint: "Postcode",
+                  inputFormatters: [
+                    LengthLimitingTextInputFormatter(6),
+                    FilteringTextInputFormatter.digitsOnly,
+                  ],
+                ),
               ],
             ),
           ),

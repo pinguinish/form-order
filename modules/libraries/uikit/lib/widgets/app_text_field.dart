@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:uikit/const/app_palette.dart';
 
 // Defauil border of AppTextField
@@ -19,6 +20,8 @@ class AppTextField extends StatelessWidget {
     this.prefixIconInnerPadding,
     this.enabled = true,
     this.style,
+    this.keyboardType,
+    this.inputFormatters,
   });
 
   final TextStyle? style;
@@ -27,6 +30,8 @@ class AppTextField extends StatelessWidget {
   final Widget? prefixIcon;
   final TextEditingController? controller;
   final EdgeInsetsDirectional? prefixIconInnerPadding;
+  final TextInputType? keyboardType;
+  final List<TextInputFormatter>? inputFormatters;
 
   @override
   Widget build(BuildContext context) {
@@ -35,14 +40,18 @@ class AppTextField extends StatelessWidget {
       controller: controller,
       cursorColor: AppPalette.greyC1,
       style: style ?? const TextStyle(color: AppPalette.greyC1),
+      keyboardType: keyboardType,
+      inputFormatters: inputFormatters,
       decoration: InputDecoration(
         hintText: hint,
         hintStyle: const TextStyle(color: AppPalette.greyC2),
         contentPadding: _innerPadding,
-        prefixIcon: Padding(
-          padding: prefixIconInnerPadding ?? _innerPadding,
-          child: prefixIcon,
-        ),
+        prefixIcon: prefixIcon == null
+            ? null
+            : Padding(
+                padding: prefixIconInnerPadding ?? _innerPadding,
+                child: prefixIcon,
+              ),
         border: _inputBorderSideColor,
         focusedBorder: _inputBorderSideColor,
       ),
