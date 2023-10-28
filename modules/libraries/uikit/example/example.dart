@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:uikit/const/app_palette.dart';
 import 'package:uikit/widgets/app_button.dart';
 import 'package:uikit/widgets/app_text_button.dart';
+import 'package:uikit/widgets/app_text_field.dart';
 
 void main(List<String> args) => runApp(const UIKitExample());
 
@@ -72,6 +74,20 @@ class UIKitExampleContent extends StatelessWidget {
                 onPressed: () {},
               ),
               verticalGap20,
+              AppTextField(
+                hint: "Fullname",
+                prefixIcon: SvgPicture.asset('assets/icons/person.svg'),
+              ),
+              verticalGap20,
+              SizedBox(
+                height: 38,
+                child: AppTextField(
+                  hint: "Search",
+                  prefixIcon: SvgPicture.asset('assets/icons/search.svg'),
+                  prefixIconInnerPadding:
+                      const EdgeInsetsDirectional.symmetric(vertical: 10),
+                ),
+              ),
             ],
           ),
         ),
