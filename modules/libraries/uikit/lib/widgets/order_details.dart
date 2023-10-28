@@ -9,10 +9,12 @@ class OrderDetails extends StatelessWidget {
     super.key,
     required this.fullname,
     required this.place,
+    this.onEdit,
   });
 
   final String fullname;
   final Place place;
+  final VoidCallback? onEdit;
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +49,10 @@ class OrderDetails extends StatelessWidget {
               ],
             ),
           ),
-          SvgPicture.asset('assets/icons/edit.svg')
+          GestureDetector(
+            onTap: onEdit,
+            child: SvgPicture.asset('assets/icons/edit.svg'),
+          )
         ],
       ),
     );
