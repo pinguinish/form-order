@@ -9,6 +9,7 @@ import 'package:uikit/widgets/multiple_address_input.dart';
 import 'package:uikit/widgets/app_button.dart';
 import 'package:uikit/widgets/app_text_button.dart';
 import 'package:uikit/widgets/app_text_field.dart';
+import 'package:uikit/widgets/order_details.dart';
 
 void main(List<String> args) => runApp(const UIKitExample());
 
@@ -93,9 +94,7 @@ class UIKitExampleContent extends StatelessWidget {
                     hint: "Search",
                     prefixIcon: SvgPicture.asset('assets/icons/search.svg'),
                     prefixIconInnerPadding:
-                        const EdgeInsetsDirectional.symmetric(
-                      vertical: 12,
-                    ),
+                        const EdgeInsetsDirectional.symmetric(vertical: 12),
                   ),
                 ),
                 verticalGap20,
@@ -119,6 +118,16 @@ class UIKitExampleContent extends StatelessWidget {
                     LengthLimitingTextInputFormatter(6),
                     FilteringTextInputFormatter.digitsOnly,
                   ],
+                ),
+                verticalGap20,
+                const OrderDetails(
+                  fullname: "Denilev Egor",
+                  place: (
+                    country: "Belarus",
+                    city: "Minsk",
+                    address: "Derzhinskogo 3b",
+                    postcode: 80100,
+                  ),
                 ),
               ],
             ),
