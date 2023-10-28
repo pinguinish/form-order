@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:uikit/const/app_dimensions.dart';
 import 'package:uikit/const/app_palette.dart';
 
 // Defauil border of AppTextField
 const _inputBorderSideColor = OutlineInputBorder(
   borderSide: BorderSide(color: AppPalette.greyC3),
-  borderRadius: BorderRadius.all(Radius.circular(8)),
+  borderRadius: BorderRadius.all(
+    Radius.circular(AppDimensions.inputBorderRadius),
+  ),
 );
 
 // Default inner padding os AppTextField
-const _innerPadding = EdgeInsets.all(12);
+const _innerPadding = EdgeInsets.all(AppDimensions.inputContentPadding);
 
 class AppTextField extends StatelessWidget {
   const AppTextField({
@@ -22,9 +25,13 @@ class AppTextField extends StatelessWidget {
     this.style,
     this.keyboardType,
     this.inputFormatters,
+    this.cursonColor = AppPalette.greyC1,
+    this.hintStyle,
   });
 
+  final Color cursonColor;
   final TextStyle? style;
+  final TextStyle? hintStyle;
   final bool enabled;
   final String? hint;
   final Widget? prefixIcon;
@@ -38,13 +45,13 @@ class AppTextField extends StatelessWidget {
     return TextField(
       enabled: enabled,
       controller: controller,
-      cursorColor: AppPalette.greyC1,
+      cursorColor: cursonColor,
       style: style ?? const TextStyle(color: AppPalette.greyC1),
       keyboardType: keyboardType,
       inputFormatters: inputFormatters,
       decoration: InputDecoration(
         hintText: hint,
-        hintStyle: const TextStyle(color: AppPalette.greyC2),
+        hintStyle: hintStyle ?? const TextStyle(color: AppPalette.greyC2),
         contentPadding: _innerPadding,
         prefixIcon: prefixIcon == null
             ? null

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:intl/intl.dart';
+import 'package:uikit/const/app_icons.dart';
 import 'package:uikit/const/app_palette.dart';
 import 'package:uikit/widgets/app_text_field.dart';
 
@@ -36,7 +37,7 @@ class _AppDatePickerState extends State<AppDatePicker> {
         enabled: false,
         controller: controller,
         hint: widget.hint,
-        prefixIcon: SvgPicture.asset('assets/icons/calendar.svg'),
+        prefixIcon: SvgPicture.asset(AppIcons.calendar),
       ),
     );
   }

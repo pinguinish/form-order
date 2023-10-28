@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:uikit/const/app_gap.dart';
+import 'package:uikit/const/app_icons.dart';
 import 'package:uikit/utils/widget_expander_controller.dart';
 import 'package:uikit/widgets/app_text_button.dart';
 import 'package:uikit/widgets/app_text_field.dart';
@@ -54,8 +56,8 @@ class _AddableAdressInputState extends State<MultipleAddressInput> {
         final itemController = TextEditingController();
 
         if (addressCount >= widget.addressMaxCount) {
-          // TODO: Try to get rid of it
-          // it violates the DRY principle 
+          // TODO: get rid of it
+          // it violates the DRY principle
           final nextChildren = _newChildrens(
             itemController,
             addressCount,
@@ -86,16 +88,16 @@ class _AddableAdressInputState extends State<MultipleAddressInput> {
   ]) =>
       [
         Text("Address line $addressLine*"),
-        const SizedBox(height: 8),
+        AppGap.vertical8,
         AppTextField(
           controller: controller,
           hint: "Address",
           prefixIconInnerPadding: const EdgeInsetsDirectional.symmetric(
             vertical: 10,
           ),
-          prefixIcon: SvgPicture.asset('assets/icons/address.svg'),
+          prefixIcon: SvgPicture.asset(AppIcons.address),
         ),
-        const SizedBox(height: 8),
+        AppGap.vertical8,
       ];
 
   @override

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:uikit/const/app_dimensions.dart';
+import 'package:uikit/const/app_icons.dart';
 import 'package:uikit/const/app_palette.dart';
 
 typedef Place = ({String country, String city, String address, int postcode});
@@ -19,10 +21,13 @@ class OrderDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
+      padding: const EdgeInsets.symmetric(
+        horizontal: AppDimensions.orderDetailsHorizontalPadding,
+        vertical: AppDimensions.orderDetailsVerticalPadding,
+      ),
       decoration: BoxDecoration(
         color: AppPalette.black,
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(AppDimensions.orderDetailsBorderRadius),
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -51,7 +56,7 @@ class OrderDetails extends StatelessWidget {
           ),
           GestureDetector(
             onTap: onEdit,
-            child: SvgPicture.asset('assets/icons/edit.svg'),
+            child: SvgPicture.asset(AppIcons.edit),
           )
         ],
       ),
