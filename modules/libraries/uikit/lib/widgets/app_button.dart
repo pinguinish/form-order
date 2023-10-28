@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:uikit/const/app_palette.dart';
 
-class AppTextButton extends StatelessWidget {
-  const AppTextButton({
+class AppButton extends StatelessWidget {
+  const AppButton({
     super.key,
     required this.label,
     this.onPressed,
