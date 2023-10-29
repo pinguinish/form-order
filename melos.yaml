@@ -1,0 +1,45 @@
+name: form_order
+
+packages:
+  - .
+  - modules/features/*
+  - modules/libraries/*
+
+command:
+  version:
+    #linkToCommits: true
+    workspaceChangelog: true
+
+  bootstrap:
+    # It seems so that running "pub get" in parallel has some issues (like
+    # https://github.com/dart-lang/pub/issues/3404).
+    runPubGetInParallel: false
+
+scripts:
+
+  pub:get:
+    exec: flutter pub get
+    description: Get all dependencies
+    packageFilters:
+      dirExists:
+        - lib
+
+  pub:upgrade:
+    exec: flutter pub upgrade
+    description: Upgrade all dependencies
+    packageFilters:
+      dirExists:
+        - lib
+
+  build_runner:
+    exec: dart run build_runner build --delete-conflicting-outputs
+    description: Generate all code using build_runner
+    packageFilters:
+      dependsOn: "build_runner"
+
+  test:
+    exec: flutter test
+    description: Test all code
+    packageFilters:
+      dirExists:
+        - test
