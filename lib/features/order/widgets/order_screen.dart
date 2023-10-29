@@ -28,6 +28,8 @@ class OrderScreen extends StatelessWidget {
           ),
         ),
       ),
+      // Consider to rewrite it CustomScrollView in order to make 
+      // AppBar fixed 
       appBar: FormOrderAppBar(),
     );
   }

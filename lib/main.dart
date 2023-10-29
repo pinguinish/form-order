@@ -15,6 +15,7 @@ void main() => runZonedGuarded(
       ),
     );
 
+// TODO: Put it to another file
 class MainApp extends StatelessWidget {
   const MainApp({super.key});
 
