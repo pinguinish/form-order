@@ -3,14 +3,12 @@ import 'package:flutter/material.dart';
 class FormOrderPaletteExtension
     extends ThemeExtension<FormOrderPaletteExtension> {
   const FormOrderPaletteExtension({
-    required this.backgroung,
     required this.primaryButton,
     required this.secondaryButton,
     required this.primary,
     required this.secondary,
   });
 
-  final Color backgroung;
   final Color primary;
   final Color secondary;
   final Color primaryButton;
@@ -25,7 +23,6 @@ class FormOrderPaletteExtension
     Color? secondaryButton,
   }) {
     return FormOrderPaletteExtension(
-      backgroung: backgroung ?? this.backgroung,
       primaryButton: primaryButton ?? this.primaryButton,
       secondaryButton: secondaryButton ?? this.secondaryButton,
       primary: primary ?? this.primary,
@@ -41,7 +38,6 @@ class FormOrderPaletteExtension
     if (other is! FormOrderPaletteExtension) return this;
 
     return FormOrderPaletteExtension(
-      backgroung: Color.lerp(backgroung, other.backgroung, t)!,
       primaryButton: Color.lerp(primaryButton, other.primaryButton, t)!,
       secondaryButton: Color.lerp(secondaryButton, other.secondaryButton, t)!,
       primary: Color.lerp(primary, other.primary, t)!,

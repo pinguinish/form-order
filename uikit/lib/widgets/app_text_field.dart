@@ -61,6 +61,7 @@ class AppTextField extends StatelessWidget {
               ),
         border: _inputBorderSideColor,
         focusedBorder: _inputBorderSideColor,
+        enabledBorder: _inputBorderSideColor,
       ),
     );
   }

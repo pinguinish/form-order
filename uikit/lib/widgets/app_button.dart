@@ -34,10 +34,7 @@ class AppButton extends StatelessWidget {
       ),
       child: Text(
         label,
-        style: labelStyle ??
-            const TextStyle(
-              color: Colors.white,
-            ),
+        style: labelStyle ?? const TextStyle(color: Colors.white),
       ),
     );
   }

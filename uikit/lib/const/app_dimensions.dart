@@ -1,4 +1,5 @@
 abstract class AppDimensions {
+  static const primaryHorizontalPadding = 20.0;
   static const inputBorderRadius = 8.0;
   static const inputContentPadding = 12.0;
   static const orderDetailsBorderRadius = 12.0;

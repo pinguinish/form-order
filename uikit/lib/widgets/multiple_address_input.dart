@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:uikit/const/app_gap.dart';
 import 'package:uikit/const/app_icons.dart';
+import 'package:uikit/const/app_palette.dart';
 import 'package:uikit/utils/widget_expander_controller.dart';
 import 'package:uikit/widgets/app_text_button.dart';
 import 'package:uikit/widgets/app_text_field.dart';
@@ -83,7 +84,13 @@ class _AddableAdressInputState extends State<MultipleAddressInput> {
     int addressLine = 1,
   ]) =>
       [
-        Text("Address line $addressLine*"),
+        Text(
+          "Address line $addressLine*",
+          style: const TextStyle(
+            color: AppPalette.black,
+            fontWeight: FontWeight.w600,
+          ),
+        ),
         AppGap.vertical8,
         AppTextField(
           controller: controller,
@@ -92,6 +99,7 @@ class _AddableAdressInputState extends State<MultipleAddressInput> {
             vertical: 10,
           ),
           prefixIcon: SvgPicture.asset(AppIcons.address),
+          keyboardType: TextInputType.streetAddress,
         ),
         AppGap.vertical8,
       ];
