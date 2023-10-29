@@ -28,8 +28,8 @@ class OrderScreen extends StatelessWidget {
           ),
         ),
       ),
-      // Consider to rewrite it CustomScrollView in order to make 
-      // AppBar fixed 
+      // Consider to rewrite it CustomScrollView in order to make
+      // AppBar fixed
       appBar: FormOrderAppBar(),
     );
   }
@@ -48,6 +48,9 @@ class _OrderScreenContent extends StatefulWidget {
 
 class __OrderScreenContentState extends State<_OrderScreenContent>
     with ValidationMixin {
+  late final DisplayerController displayer =
+      DisplayerController(isDisplayed: true);
+
   late final OrderInfo sender = getAllControllers(
     fullname: _$fakeSentOrder.user.fullname,
     email: _$fakeSentOrder.user.email,
@@ -93,10 +96,19 @@ class __OrderScreenContentState extends State<_OrderScreenContent>
           const Text("Step 1", style: TextStyle(fontSize: 16)),
           AppGap.vertical20,
           // Date picker
-          Label(
-            label: "Start date",
-            child: AppDatePicker(onPicked: (date) {}),
+          ValueListenableBuilder(
+            valueListenable: displayer,
+            builder: (_, displayed, __) {
+              if (displayed) {
+                return Label(
+                  label: "Start date",
+                  child: AppDatePicker(onPicked: (date) {}),
+                );
+              }
+              return const SizedBox.shrink();
+            },
           ),
+
           AppGap.vertical48,
           SwitchReplacer(
             label: "Sender details",
@@ -115,7 +127,10 @@ class __OrderScreenContentState extends State<_OrderScreenContent>
               },
             ),
             secondWidget: const SearchList(order: _$fakeSentOrder),
-            onSwitch: () => sender.addresses.clear(),
+            onSwitch: () {
+              sender.addresses.clear();
+              displayer.differ();
+            },
           ),
           AppGap.vertical56,
           SwitchReplacer(
@@ -131,6 +146,7 @@ class __OrderScreenContentState extends State<_OrderScreenContent>
                 if (receiver.addresses.isEmpty) {
                   value.text = _$fakeReceviedOrder.destination.address;
                 }
+
                 receiver.addresses.add(value);
               },
             ),
@@ -162,11 +178,12 @@ class __OrderScreenContentState extends State<_OrderScreenContent>
   void dispose() {
     sender.disposeAll();
     receiver.disposeAll();
+    displayer.dispose();
     super.dispose();
   }
 }
 
-// Consider to put these in another file 
+// Consider to put these in another file
 typedef OrderInfo = ({
   TextEditingController fullname,
   TextEditingController email,
@@ -191,6 +208,7 @@ extension on OrderInfo {
   }
 }
 
+// TODO: consider to move all code below to different files
 const _$fakeSentOrder = OrderInformationModel(
   user: UserModel(
     firstname: "Egor",
@@ -220,3 +238,12 @@ const _$fakeReceviedOrder = OrderInformationModel(
     postcode: 220069,
   ),
 );
+
+class DisplayerController extends ValueNotifier<bool> {
+  DisplayerController({required bool isDisplayed}) : super(isDisplayed);
+
+  void differ() {
+    value = !value;
+    notifyListeners();
+  }
+}
