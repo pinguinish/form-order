@@ -18,7 +18,7 @@ class FormOrderAppBar extends StatelessWidget implements PreferredSize {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      
+      surfaceTintColor: Colors.transparent,
       centerTitle: true,
       leading: GestureDetector(
         child: Padding(
